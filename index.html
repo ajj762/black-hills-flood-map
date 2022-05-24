@@ -1,375 +1,342 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+  <head>
+    <title>Flood Survivor Stories</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Map">
+    <meta name="author" content="Annie Jennemann">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .map-holder {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: block;
+        max-width: 700px;
+        margin: 1rem auto;
+      }
 
-	<head>
-		<title>Flood Survivor Stories</title>
-		<meta charset="utf-8">
-		<meta name="description" content="Map">
-		<meta name="author" content="Annie Jennemann">
-		<meta name="keywords" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+      .svg-holder {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+      }
 
-		<style>
-		.map-holder {
-		    position: relative;
-		    width: 100%;
-		    height: auto;
-		    display: block;
-		    max-width: 700px;
-		    margin: 1rem auto;
-		}
+      p {
+        font-family: 'Noto Serif', serif;
+        font-size: 13px;
+        position: relative;
+        text-align: center;
+        margin: auto;
+        margin-top: 15px;
+        margin-bottom: 15px;
+      }
 
-		.svg-holder {
-		    position: absolute;
-		    top: 0;
-		    left: 0;
-		    width: 100%;
-		    height: auto;
-		}
+      h1 {
+        font-family: 'Noto Serif', serif;
+        font-weight: 700;
+        font-size: 35px;
+        text-align: center;
+        margin: auto;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        max-width: 700px;
+      }
 
-		p {
-		  font-family: 'Noto Serif', serif;
-		  font-size: 13px;
-			position: relative;
-		  text-align: center;
-			margin: auto;
-			margin-top: 15px;
-			margin-bottom: 15px;
-		}
+      h3 {
+        font-family: 'Noto Serif', serif;
+        font-weight: 700;
+        font-size: 30px;
+        margin: auto;
+        margin-top: 15px;
+        margin-bottom: 15px;
+      }
 
-		h1 {
-		  font-family: 'Noto Serif', serif;
-		  font-weight: 700;
-		  font-size: 35px;
-		  text-align: center;
-			margin: auto;
-			margin-top: 15px;
-			margin-bottom: 15px;
-			max-width: 700px;
-		}
+      a {
+        text-decoration: none;
+        color: black;
+        margin: auto;
+      }
 
-		h3 {
-		  font-family: 'Noto Serif', serif;
-		  font-weight: 700;
-		  font-size: 30px;
-			margin: auto;
-			margin-top: 15px;
-			margin-bottom: 15px;
-		}
+      a:onhover {
+        color: blue;
+      }
 
-		a {
-		  text-decoration: none;
-		  color: black;
-			margin: auto;
-		}
+      .img-holder {
+        position: relative;
+        width: 100%;
+      }
 
-		a:onhover {
-		  color: blue;
-		}
+      .img-holder img {
+        width: 100%;
+      }
 
-		.img-holder {
-		  position: relative;
-		  width: 100%;
-		}
+      .flex-pic section:first-child {
+        display: flex;
+      }
 
-		.img-holder img {
-		  width: 100%;
-		}
+      .flex-pic img {
+        width: 80%;
+        margin: auto;
+        display: flex;
+      }
 
-		.flex-pic section:first-child {
-  		display: flex;
-		}
+      .flex-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-right: 30px;
+      }
 
-		.flex-pic img {
-			width: 80%;
-			margin: auto;
-		  display: flex;
-		}
+      .quote {
+        font-style: oblique;
+      }
 
-		.flex-text {
-		  display: flex;
-		  flex-direction: column;
-		  align-items: flex-start;
-			margin-right: 30px;
-		}
+      .audio {
+        margin: auto;
+      }
 
-		.quote {
-		  font-style: oblique;
-		}
+      path:hover {
+        cursor: pointer;
+        fill: #505050;
+      }
 
-		.audio {
-			margin: auto;
-		}
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+      }
 
-		path:hover {
-		  cursor: pointer;
-		  fill: #505050;
-		}
+      .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 30px;
+        border: 1px solid #888;
+        width: 70%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+      }
 
-		/* The Modal (background) */
-		.modal {
-		  display: none; /* Hidden by default */
-		  position: fixed; /* Stay in place */
-		  z-index: 1; /* Sit on top */
-		  padding-top: 100px; /* Location of the box */
-		  left: 0;
-		  top: 0;
-		  width: 100%; /* Full width */
-		  height: 100%; /* Full height */
-		  overflow: auto; /* Enable scroll if needed */
-		  background-color: rgb(0,0,0); /* Fallback color */
-		  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-		}
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
 
-/* Modal Content/Box */
-.modal-content {
-	background-color: #fefefe;
-  margin: auto;
-  padding: 30px;
-  border: 1px solid #888;
-	width: 70%;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-evenly;
-}
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
 
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
+      .bylines {
+        display: flex;
+        flex-direction: row;
+        max-width: 700px;
+        margin: auto;
+      }
 
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
+      .about {
+        max-width: 700px;
+      }
 
-.bylines {
-	display: flex;
-	flex-direction: row;
-	max-width: 700px;
-	margin: auto;
-}
+      @media (max-width: 800px) {
+        h1 {
+          font-size: 22px;
+        }
 
-.about {
-	max-width: 700px;
-}
+        .modal-content {
+          flex-direction: column;
+        }
 
-@media (max-width: 800px) {
+        .flex-pic img {
+          margin: auto;
+        }
 
-	h1 {
-		font-size: 22px;
-	}
-
-	.modal-content {
-		flex-direction: column;
-	}
-
-	.flex-pic img {
-		margin: auto;
-	}
-
-	@media (max-width: 550px) {
-
-	}
-
-
-}
-
-		</style>
-	</head>
+        @media (max-width: 550px) {}
+      }
+    </style>
+  </head>
   <body>
-
-		<h1>Listen to stories of 1972 Black Hills Flood survivors</h1>
-		<p class="about">The marked spots on the map are the locations of where the survivors told their stories. Click on an the marked spots on the map to read about or hear from survivors of the 1972 Black Hills Flood.</p>
-
+    <h1>Listen to stories of 1972 Black Hills Flood survivors</h1>
+    <p class="about">The marked spots on the map are the locations of where the survivors told their stories. Click on an the marked spots on the map to read about or hear from survivors of the 1972 Black Hills Flood.</p>
     <div class="map-holder">
-
-			<div class="img-holder">
-				<img src="images/sd-map-01.png" alt=""/>
-
-				<div class="svg-holder">
-
-					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-						 viewBox="0 0 667.3 433.1" width="100%" style="enable-background:new 0 0 667.3 433.1;" xml:space="preserve">
-					<style type="text/css">
-						.st0{fill:#F7E137;stroke:#F7E137;stroke-width:4;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:10;}
-					</style>
-
-					<g id="points" xmlns:cc="http://creativecommons.org/ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
-						<path id="Dick_Knecht" vector-effect="none" class="st0" d="M55,253.7l15.9,15.9 M70.9,253.7L55,269.6" class="interview-location" />
-						<path id="Rob_Oliver" vector-effect="none" class="st0" d="M148.9,222.5l15.9,15.9 M164.7,222.5l-15.9,15.9" class="interview-location" />
-						<path id="Masters_family" vector-effect="none" class="st0" d="M181.1,193.2l15.9,15.9 M197,193.2l-15.9,15.9" class="interview-location" />
-						<path id="Kay_Schriever" vector-effect="none" class="st0" d="M245.1,123l15.9,15.9 M261,123l-15.9,15.9" class="interview-location" />
-						<path id="Arlene_Mattis" vector-effect="none" class="st0" d="M255.1,114l15.9,15.9 M271,114l-15.9,15.9" class="interview-location" />
-						<path id="Darrel_Heimes" vector-effect="none" class="st0" d="M330.7,128.1l15.9,15.9 M346.6,128.1L330.7,144" class="interview-location" />
-						<path id="Delores_Allen" vector-effect="none" class="st0" d="M352.6,112.9l15.9,15.9 M368.4,112.9l-15.9,15.9" class="interview-location" />
-						<path id="Sharon_Weber2" vector-effect="none" class="st0" d="M298.8,146.4l15.9,15.9 M314.6,146.4l-15.9,15.9" class="interview-location" />
-						<path id="Steve_Paula" vector-effect="none" class="st0" d="M290.9,125.6l15.9,15.9 M306.8,125.6l-15.9,15.9" class="interview-location" />
-						<path id="Warren_Nelson" vector-effect="none" class="st0" d="M21.8,285.3l15.9,15.9 M37.6,285.3l-15.9,15.9" class="interview-location" />
-						<path id="Tom_Haggerty" vector-effect="none" class="st0" d="M206.1,190.2l15.9,15.9 M222,190.2l-15.9,15.9" class="interview-location" />
-					</g>
-
-					</svg>
-				</div>
-
-			</div>
-		</div>
-
-<div id="myModal" class="modal">
-
-		<div class="modal-content">
-
-			<span class="close">&times;</span>
-
-			<div class="flex-pic">
-
-			</div>
-
-			<div class="flex-text">
-
-			</div>
-
-		</div>
-
-</div>
-
-<div class="bylines">
-
-<p>By Annie Jennemann, Regan Mertz</p>
-<p>Photos by Johnny Sundby Photography</p>
-
-</div>
-
+      <div class="img-holder">
+        <img src="images/sd-map-01.png" alt="" />
+        <div class="svg-holder">
+          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 667.3 433.1" width="100%" style="enable-background:new 0 0 667.3 433.1;" xml:space="preserve">
+            <style type="text/css">
+              .st0 {
+                fill: #F7E137;
+                stroke: #F7E137;
+                stroke-width: 4;
+                stroke-linecap: round;
+                stroke-linejoin: bevel;
+                stroke-miterlimit: 10;
+              }
+            </style>
+            <g id="points" xmlns:cc="http://creativecommons.org/ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+              <path id="Dick_Knecht" vector-effect="none" class="st0" d="M55,253.7l15.9,15.9 M70.9,253.7L55,269.6" class="interview-location" />
+              <path id="Rob_Oliver" vector-effect="none" class="st0" d="M148.9,222.5l15.9,15.9 M164.7,222.5l-15.9,15.9" class="interview-location" />
+              <path id="Masters_family" vector-effect="none" class="st0" d="M181.1,193.2l15.9,15.9 M197,193.2l-15.9,15.9" class="interview-location" />
+              <path id="Kay_Schriever" vector-effect="none" class="st0" d="M245.1,123l15.9,15.9 M261,123l-15.9,15.9" class="interview-location" />
+              <path id="Arlene_Mattis" vector-effect="none" class="st0" d="M255.1,114l15.9,15.9 M271,114l-15.9,15.9" class="interview-location" />
+              <path id="Darrel_Heimes" vector-effect="none" class="st0" d="M330.7,128.1l15.9,15.9 M346.6,128.1L330.7,144" class="interview-location" />
+              <path id="Delores_Allen" vector-effect="none" class="st0" d="M352.6,112.9l15.9,15.9 M368.4,112.9l-15.9,15.9" class="interview-location" />
+              <path id="Sharon_Weber2" vector-effect="none" class="st0" d="M298.8,146.4l15.9,15.9 M314.6,146.4l-15.9,15.9" class="interview-location" />
+              <path id="Steve_Paula" vector-effect="none" class="st0" d="M290.9,125.6l15.9,15.9 M306.8,125.6l-15.9,15.9" class="interview-location" />
+              <path id="Warren_Nelson" vector-effect="none" class="st0" d="M21.8,285.3l15.9,15.9 M37.6,285.3l-15.9,15.9" class="interview-location" />
+              <path id="Tom_Haggerty" vector-effect="none" class="st0" d="M206.1,190.2l15.9,15.9 M222,190.2l-15.9,15.9" class="interview-location" />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="flex-pic"></div>
+        <div class="flex-text"></div>
+      </div>
+    </div>
+    <div class="bylines">
+      <p>By Annie Jennemann, Regan Mertz</p>
+      <p>Photos by Johnny Sundby Photography</p>
+    </div>
   </body>
-
-	<script>
-	"use strict";
-
-	var interviews = document.getElementById('points').getElementsByTagName('path');
-
-	var data =
-	[{"path_id":"Dick_Knecht",
-		"name":"Dick Knecht",
-		"image":"images/knecht.jpg",
-		"text":"“And I heard her yelling. And anyway, the lightning flash just about the time she was coming down the creek, but she was holding on to the drawer of a cabinet that must have been in her bedroom or something. And she must have gotten out of the house through a window or something. And the cabinet was there and she grabbed it. And so I did fish her out but she was all muddy and I suppose she was maybe about, I don't know, six or something like that. And so I tried to grab her off the balcony that we were standing on. And when she started slipping she didn't have any clothes on as I remembered. But her whole body was very slippery. So I tried to grab her and she started slipping out of my hands. But I held on to her until I got down to her feet and she was about ready to keep going past the house we were in and I grabbed her by the foot and dragged her over and she spent the rest of the time there with the three of us. And so she and I held each other really closely to keep warm because it was icy cold.”",
-		"link":"https://listen.sdpb.org/weather/2022-03-02/condo-owner-recalls-72-flood-and-pretty-soon-they-wouldnt-scream-anymore",
-		"audio":"files/knecht.mp3"},
-	{"path_id":"Rob_Oliver",
-		"name":"Rob Oliver",
-		"image":"images/oliver.jpg",
-		"text":"“You know, we there were three of us living at home. I was the last of seven kids that my parents raised. And I was I was the last one at home. I was the youngest. And I was the last one at home. All the rest were in, you know, various stages of, you know, living elsewhere and older than me. And so, all three of us arrived, and we were among the lucky ones.”",
-		"link":"https://listen.sdpb.org/arts-life/2022-04-13/50-years-ago-rapid-city-couple-reunited-after-harrowing-flood-ordeal",
-		"audio":"files/oliver.mp3"},
-	{"path_id":"Masters_family",
-		"name":"Masters family",
-		"image":"images/masters2.jpg",
-		"text":"Quote will go here.",
-		"link":"https://listen.sdpb.org/arts-life/2022-03-16/mother-who-lost-children-in-flood-i-dont-think-you-ever-get-over-it-ever-ever-ever",
-		"audio":""},
-	{"path_id":"Kay_Schriever",
-		"name":"Kay Schriever",
-		"image":"images/schriever2.jpg",
-		"text":"Quote will go here.",
-		"link":"https://listen.sdpb.org/arts-life/2022-02-23/we-all-shouldve-been-in-therapy-recalling-the-black-hills-flood-50-years-later",
-		"audio":""},
-	{"path_id":"Arlene_Mattis",
-		"name":"Arlene Mattis",
-		"image":"images/mattis.jpg",
-		"text":"“So we worried all night, I worried all night. And I could see that hill across the crick, you know, to the north over a hill kind of like I thought, well, if I could just get over that hill, you know, I could get home.” ",
-		"link":"https://listen.sdpb.org/arts-life/2022-04-20/woman-recalls-surviving-72-flood-on-floating-roofs",
-		"audio":"files/mattis.mp3"},
-	{"path_id":"Darrel_Heimes",
-		"name":"Darrel Heimes",
-		"image":"images/heimes2.jpg",
-		"text":"Quote will go here.",
-		"link":"https://listen.sdpb.org/weather/2022-03-30/50-years-after-flood-guard-soldier-still-haunted-by-recovery-mission",
-		"audio":"files/heimes.mp3"},
-	{"path_id":"Delores_Allen",
-		"name":"Delores Allen",
-		"image":"images/allen.jpg",
-		"text":"“My mother and my cousin went running towards the Philadelphia shoot where my mother houses and they reached and she could hear a third and she knew my cousin got hit by a tree where she died. And then my mother hung on to the porch up to the ceiling, you know the rafters? She hung there until the boat came to rescue her hours later. So she was in the flood and I guess the ledges tore her clothes off. And she's covered with mud.”",
-		"link":"",
-		"audio":"files/allen.mp3"},
-	{"path_id":"Sharon_Weber2",
-		"name":"Sharon Weber",
-		"image":"images/weber.jpg",
-		"text":"“... One of the doctors and a nurse was assigned to be out there and triage and tell him whether to come into the ER or where to go, you know whether to go across the street to the poor, they were keeping people and if they were deceased, the doctor checked him and told him to go which more to go to it than that. And it was a foggy, dreary, spooky night. It was just that I still have that eerie feeling from that night.”",
-		"link":"https://listen.sdpb.org/weather/2022-05-11/former-nurse-can-still-see-the-faces-of-victims-50-years-after-the-1972-rapid-city-flood",
-		"audio":"files/weber.mp3"},
-	{"path_id":"Steve_Paula",
-		"name":"Steve Paula",
-		"image":"images/paula.jpg",
-		"text":"“And that night, my dad was the funeral director that got a call from I don't know if there was the police department or the sheriff or the coroner saying you better get to your funeral home. This is This is bad. So he left and headed down to the funeral home, which was on the corner of Kansas City and 13th street. So his night ended early, or they started early.”",
-		"link":"",
-		"audio":"files/paula.mp3"},
-	{"path_id":"Warren_Nelson",
-		"name":"Warren Nelson",
-		"image":"images/nelson2.jpg",
-		"text":"Quote will go here.",
-		"link":"https://listen.sdpb.org/arts-life/2022-02-09/warren-nelson-remembers-the-black-hills-flood-of-1972",
-		"audio":"files/nelson.mp3"},
-	{"path_id":"Tom_Haggerty",
-		"name":"Tom Haggerty",
-		"image":"images/haggerty.jpg",
-		"text":"“While the water was running straight back down behind our house, it was very eerie because you could hear people screaming for help as they floated by but I couldn't see you. I mean, it was so dark. It was. You couldn't see anything past the length of your arm. Occasionally there'll be lightning strikes but even that you couldn't see because the clouds were so thick.”",
-		"link":"https://listen.sdpb.org/arts-life/2022-04-27/survivor-recalls-1972-black-hills-flood",
-		"audio":"files/haggerty.mp3"}];
-
-	// Get the modal
-	var modal = document.getElementById("myModal");
-
-	// Get the <span> element that closes the modal
-	var span = document.getElementsByClassName("close")[0];
-
-	// When the user clicks on the button, open the modal
-	points.onclick = function() {
-	  modal.style.display = "block";
-	}
-
-	// When the user clicks on <span> (x), close the modal
-	span.onclick = function() {
-	  modal.style.display = "none";
-	}
-
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-	  if (event.target == modal) {
-	    modal.style.display = "none";
-	  }
-	}
-
-	for (var i = 0; i<interviews.length; i++) {
-
-	for (var k = 0; k<data.length; k++) {
-		if (interviews[i].id === data[k].path_id) {
-		var person = interviews[i];
-		person.addEventListener("click", function() {
-
-	for (var j = 0; j<data.length; j++) {
-			if (this.id === data[j].path_id) {
-			modal.innerHTML = '<div class="modal-content">' +
-			'<div class="flex-pic">' +
-			'<img src="' + data[j].image + '" alt=""/>' + '</div>' +
-			'<div class="flex-text">' + '<h3>' + data[j].name + '</h3>' +
-			'<p class="quote">' + data[j].text + '</p>' +
-			'<p><a href="' + data[j].link + '">Read more about ' + data[j].name + '</a></p>' +
-			'<audio controls class="audio">	<source src="' + data[j].audio + '" type="audio/mpeg"></audio>' + '</div>' + '</div>';
-
-								}
-							}
-						});
-					}
-				}
-			}
-
-	</script>
+  <script>
+    "use strict";
+    var interviews = document.getElementById('points').getElementsByTagName('path');
+    var data = [{
+      "path_id": "Dick_Knecht",
+      "name": "Dick Knecht",
+      "image": "images/knecht.jpg",
+      "text": "“And I heard her yelling. And anyway, the lightning flash just about the time she was coming down the creek, but she was holding on to the drawer of a cabinet that must have been in her bedroom or something. And she must have gotten out of the house through a window or something. And the cabinet was there and she grabbed it. And so I did fish her out but she was all muddy and I suppose she was maybe about, I don't know, six or something like that. And so I tried to grab her off the balcony that we were standing on. And when she started slipping she didn't have any clothes on as I remembered. But her whole body was very slippery. So I tried to grab her and she started slipping out of my hands. But I held on to her until I got down to her feet and she was about ready to keep going past the house we were in and I grabbed her by the foot and dragged her over and she spent the rest of the time there with the three of us. And so she and I held each other really closely to keep warm because it was icy cold.”",
+      "link": "https://listen.sdpb.org/weather/2022-03-02/condo-owner-recalls-72-flood-and-pretty-soon-they-wouldnt-scream-anymore",
+      "audio": "files/knecht.mp3"
+    }, {
+      "path_id": "Rob_Oliver",
+      "name": "Rob Oliver",
+      "image": "images/oliver.jpg",
+      "text": "“You know, we there were three of us living at home. I was the last of seven kids that my parents raised. And I was I was the last one at home. I was the youngest. And I was the last one at home. All the rest were in, you know, various stages of, you know, living elsewhere and older than me. And so, all three of us arrived, and we were among the lucky ones.”",
+      "link": "https://listen.sdpb.org/arts-life/2022-04-13/50-years-ago-rapid-city-couple-reunited-after-harrowing-flood-ordeal",
+      "audio": "files/oliver.mp3"
+    }, {
+      "path_id": "Masters_family",
+      "name": "Masters family",
+      "image": "images/masters2.jpg",
+      "text": "“... once I got out of the vehicle, I had Lavon, where I held on to her with one arm like this from about 1030 at night to four o'clock in the morning. And she had a whole branch of the tree and said to me several times in the night, honey, just let me go and I said I'm not gonna let you go. And it was how it's gonna go away. I could hang on to her.”",
+      "link": "https://listen.sdpb.org/arts-life/2022-03-16/mother-who-lost-children-in-flood-i-dont-think-you-ever-get-over-it-ever-ever-ever",
+      "audio": "files/masters.mp3"
+    }, {
+      "path_id": "Kay_Schriever",
+      "name": "Kay Schriever",
+      "image": "images/schriever2.jpg",
+      "text": "“We just were looking wondering what we were going to do. And I just looked in this direction and saw that there was a fire escape. I just ran. It was above the ground. And that's what we're looking for. The water was like I said probably this deep when I came across the parking lots and There was debris in it at that time because, you know, stuff was hitting me in the legs, but I could get through it at that point, you know, and I ran and like I said, I tried that I tried the first door and it was locked. So I went well. I went up to this part here and I was on that section of it, watching them and hollering.”",
+      "link": "https://listen.sdpb.org/arts-life/2022-02-23/we-all-shouldve-been-in-therapy-recalling-the-black-hills-flood-50-years-later",
+      "audio": "files/schriever.mp3"
+    }, {
+      "path_id": "Arlene_Mattis",
+      "name": "Arlene Mattis",
+      "image": "images/mattis.jpg",
+      "text": "“So we worried all night, I worried all night. And I could see that hill across the crick, you know, to the north over a hill kind of like I thought, well, if I could just get over that hill, you know, I could get home.” ",
+      "link": "https://listen.sdpb.org/arts-life/2022-04-20/woman-recalls-surviving-72-flood-on-floating-roofs",
+      "audio": "files/mattis.mp3"
+    }, {
+      "path_id": "Darrel_Heimes",
+      "name": "Darrel Heimes",
+      "image": "images/heimes2.jpg",
+      "text": "Quote will go here.",
+      "link": "https://listen.sdpb.org/weather/2022-03-30/50-years-after-flood-guard-soldier-still-haunted-by-recovery-mission",
+      "audio": "files/heimes.mp3"
+    }, {
+      "path_id": "Delores_Allen",
+      "name": "Delores Allen",
+      "image": "images/allen.jpg",
+      "text": "“My mother and my cousin went running towards the Philadelphia shoot where my mother houses and they reached and she could hear a third and she knew my cousin got hit by a tree where she died. And then my mother hung on to the porch up to the ceiling, you know the rafters? She hung there until the boat came to rescue her hours later. So she was in the flood and I guess the ledges tore her clothes off. And she's covered with mud.”",
+      "link": "",
+      "audio": "files/allen.mp3"
+    }, {
+      "path_id": "Sharon_Weber2",
+      "name": "Sharon Weber",
+      "image": "images/weber.jpg",
+      "text": "“... One of the doctors and a nurse was assigned to be out there and triage and tell him whether to come into the ER or where to go, you know whether to go across the street to the poor, they were keeping people and if they were deceased, the doctor checked him and told him to go which more to go to it than that. And it was a foggy, dreary, spooky night. It was just that I still have that eerie feeling from that night.”",
+      "link": "https://listen.sdpb.org/weather/2022-05-11/former-nurse-can-still-see-the-faces-of-victims-50-years-after-the-1972-rapid-city-flood",
+      "audio": "files/weber.mp3"
+    }, {
+      "path_id": "Steve_Paula",
+      "name": "Steve Paula",
+      "image": "images/paula.jpg",
+      "text": "“And that night, my dad was the funeral director that got a call from I don't know if there was the police department or the sheriff or the coroner saying you better get to your funeral home. This is This is bad. So he left and headed down to the funeral home, which was on the corner of Kansas City and 13th street. So his night ended early, or they started early.”",
+      "link": "",
+      "audio": "files/paula.mp3"
+    }, {
+      "path_id": "Warren_Nelson",
+      "name": "Warren Nelson",
+      "image": "images/nelson2.jpg",
+      "text": "Quote will go here.",
+      "link": "https://listen.sdpb.org/arts-life/2022-02-09/warren-nelson-remembers-the-black-hills-flood-of-1972",
+      "audio": "files/nelson.mp3"
+    }, {
+      "path_id": "Tom_Haggerty",
+      "name": "Tom Haggerty",
+      "image": "images/haggerty.jpg",
+      "text": "“While the water was running straight back down behind our house, it was very eerie because you could hear people screaming for help as they floated by but I couldn't see you. I mean, it was so dark. It was. You couldn't see anything past the length of your arm. Occasionally there'll be lightning strikes but even that you couldn't see because the clouds were so thick.”",
+      "link": "https://listen.sdpb.org/arts-life/2022-04-27/survivor-recalls-1972-black-hills-flood",
+      "audio": "files/haggerty.mp3"
+    }];
+    var modal = document.getElementById("myModal");
+    var span = document.getElementsByClassName("close")[0];
+    points.onclick = function() {
+      modal.style.display = "block";
+    }
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    for (var i = 0; i < interviews.length; i++) {
+      for (var k = 0; k < data.length; k++) {
+        if (interviews[i].id === data[k].path_id) {
+          var person = interviews[i];
+          person.addEventListener("click", function() {
+            for (var j = 0; j < data.length; j++) {
+              if (this.id === data[j].path_id) {
+                modal.innerHTML = ' < div class = "modal-content" > ' +
+                ' < div class = "flex-pic" > ' +
+                ' < img src = "' + data[j].image + '"
+                alt = "" / > ' + ' < /div>' +
+                ' < div class = "flex-text" > ' + ' < h3 > ' + data[j].name + ' < /h3>' +
+                ' < p class = "quote" > ' + data[j].text + ' < /p>' +
+                ' < p > < a href = "' + data[j].link + '" > Read more about ' + data[j].name + ' < /a> < /p>' +
+                ' < audio controls class = "audio" > < source src = "' + data[j].audio + '"
+                type = "audio/mpeg" > < /audio>' + ' < /div>' + ' < /div>';
+              }
+            }
+          });
+        }
+      }
+    }
+  </script>
 </html>
