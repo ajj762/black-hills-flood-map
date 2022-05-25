@@ -286,13 +286,12 @@
       "name": "Steve Paula",
       "image": "images/paula.jpg",
       "text": "“And that night, my dad was the funeral director that got a call from I don't know if there was the police department or the sheriff or the coroner saying you better get to your funeral home. This is This is bad. So he left and headed down to the funeral home, which was on the corner of Kansas City and 13th street. So his night ended early, or they started early.”",
-      "link": "",
       "audio": "files/paula.mp3"
     }, {
       "path_id": "Warren_Nelson",
       "name": "Warren Nelson",
       "image": "images/nelson2.jpg",
-      "text": "Quote will go here.",
+      "text": "“And then I got back to camp rapidly and they were deploying different people out to go out to different areas. And the group I went with was what today is Dark Canyon. Yeah, it got bad quickly down there. We went, we parked up on the road. And we went on foot down into the canyon there. Each one of us went to a different house to see if there were people in the house trying to get them to go out before it got too bad because the water was starting to rise already.”",
       "link": "https://listen.sdpb.org/arts-life/2022-02-09/warren-nelson-remembers-the-black-hills-flood-of-1972",
       "audio": "files/nelson.mp3"
     }, {
@@ -323,15 +322,14 @@
           person.addEventListener("click", function() {
             for (var j = 0; j < data.length; j++) {
               if (this.id === data[j].path_id) {
-                modal.innerHTML = ' < div class = "modal-content" > ' +
-                ' < div class = "flex-pic" > ' +
-                ' < img src = "' + data[j].image + '"
-                alt = "" / > ' + ' < /div>' +
-                ' < div class = "flex-text" > ' + ' < h3 > ' + data[j].name + ' < /h3>' +
-                ' < p class = "quote" > ' + data[j].text + ' < /p>' +
-                ' < p > < a href = "' + data[j].link + '" > Read more about ' + data[j].name + ' < /a> < /p>' +
-                ' < audio controls class = "audio" > < source src = "' + data[j].audio + '"
-                type = "audio/mpeg" > < /audio>' + ' < /div>' + ' < /div>';
+                modal.innerHTML = 
+								'<div class="modal-content">' +
+								'<div class="flex-pic">' +
+						  	'<img src="' + data[j].image + '" alt=""/>' + '</div>' +
+						    '<div class="flex-text">' + '<h3>' + data[j].name + '</h3>' +
+						    '<p class="quote">' + data[j].text + '</p>' +
+						  	'<p><a href="' + data[j].link + '">Read more about ' + data[j].name + '</a></p>' +
+						  	'<audio controls>	<source src="' + data[j].audio + '" type="audio/mpeg"></audio>' + '</div>' + '</div>';
               }
             }
           });
